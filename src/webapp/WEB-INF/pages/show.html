@@ -5,20 +5,55 @@
     <title>Информация о пользователе</title>
 
     <style>
-        p {
+        input {
+            font-size: 16px;
+            cursor: pointer;
+        }
+        form, a{
             display: inline-block;
+        }
+
+        a {
+            margin-left: 20px;
+        }
+        a.edit {
+            margin-right: 10px;
+            margin-left: 150px;
+        }
+        .edit input {
+            background-color: darkseagreen;
+            cursor: pointer;
+        }
+        .edit input:hover {
+            background-color: mediumseagreen;
+        }
+        form input {
+            background-color: lightcoral;
+            cursor: pointer;
+        }
+        form input:hover {
+            background-color: indianred;
+        }
+        div {
+            padding-left: 20px;
+            width: 395px;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
-    <p th:text="${user.getId()}">id</p>
-    <p th:text="${user.getName()}">Имя</p>
-    <br/>
-    <a th:href="@{/users/{id}/edit(id=${user.getId()})}">Изменить!</a>
-    <br/>
-    <hr/>
+    <h1>Информация о пользователе</h1>
+    <div>
+        <p>id – <span th:text="${user.getId()}"></span></p>
+        <p>Имя – <span th:text="${user.getName()}"></span></p>
+        <p>Фамилия – <span th:text="${user.getLastName()}"></span></p>
+        <p>Возраст – <span th:text="${user.getAge()}"></span></p>
+        <hr/>
+    </div>
+    <a th:href="@{/users}"><input type="submit" value="Назад"/></a>
+    <a class="edit" th:href="@{/users/{id}/edit(id=${user.getId()})}"><input type="submit" value="Изменить"/></a>
     <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
-        <input type="submit" value="Удалить!" />
+        <input type="submit" value="Удалить" />
     </form>
 </body>
 </html>

@@ -3,14 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Редактирование пользователя</title>
+
+    <style>
+        form {
+            width: 310px;
+            margin-left: 20px;
+            font-size: 20px;
+        }
+        input {
+            font-size: 16px;
+        }
+        label {
+            float: left;
+        }
+        .done {
+            cursor: pointer;
+            float: right;
+        }
+        div {
+            width: 270px;
+            text-align: right;
+            margin-left: 15px;
+        }
+    </style>
 </head>
 <body>
+    <h1>Редактирование данных</h1>
     <form th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
-        <label for="name">Введите имя: </label>
-        <input type="text" th:field="*{name}" id="name" />
-        <br/>
+        <div>
+            <label for="name">Имя: </label>
+            <input type="text" th:field="*{name}" id="name" />
+            <br/>
+            <br/>
+            <label for="lastName">Фамилия: </label>
+            <input type="text" th:field="*{lastName}" id="lastName" />
+            <br/>
+            <br/>
+            <label for="age">Возраст: </label>
+            <input type="text" th:field="*{age}" id="age" />
+            <br/>
+            <br/>
+        </div>
         <hr/>
-        <input type="submit" value="Изменить!" />
+        <input class="done" type="submit" value="Готово" />
     </form>
 </body>
 </html>
